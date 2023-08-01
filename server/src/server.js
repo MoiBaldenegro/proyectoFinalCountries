@@ -11,9 +11,8 @@ server.use(cors());
 
 server.use(router);
 
-server.get("/countries", (req, res)=>{
-    res.status(200).send("Ruta funcionando como pedrada")
 
-})
+
+
 
 module.exports = server;
