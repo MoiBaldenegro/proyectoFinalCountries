@@ -1,11 +1,18 @@
+
+
 const countriesGetHandler = (req, res)=>{
-    res.status(200).send("Aqui te muestro todos los paises papa");
+    const { name } = req.query;  
+    if(name){
+        res.status(200).send(`Este pais lleva el nombre de ${name} `);
+    };
+    res.status(200).send("Aqui te muestro todos los paises papa"); 
 };
 const countriesIdGetHandler =  (req, res)=>{
-    res.status(200).send("Aqui te muestro el pais con el ID que tu quieras papa");
+    const { id } = req.params;
+    res.status(200).send(`Aqui te muestro el pais con el ID ${id} `);
 };
 const countriesNameGetHandler =  (req, res)=>{
-    res.status(200).send("Aqui te muestro el pais con el NOMBRE que tu quieras mi rey");
+    
 };
 
 

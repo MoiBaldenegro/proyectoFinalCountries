@@ -4,26 +4,27 @@ const { DataTypes, UUID } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Activity', {
-    id: {
-      type: DataTypes.UUID,
-      primaryKey: true,
-      defaultValue:  DataTypes.UUIDV4
+    id : {
+      type : DataTypes.UUID,
+      primaryKey : true,
+      defaultValue :  DataTypes.UUIDV4,
+      allowNull : false
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
+    name : {
+      type : DataTypes.STRING,
+      allowNull : false
     },
     difficulty: {
-      type: DataTypes.INTEGER,
+      type : DataTypes.INTEGER,
       allowNull: false
     },
-    duration: {
-      type: DataTypes.INTEGER
+    duration : {
+      type : DataTypes.INTEGER
   
     },
-    season:{
-      type: DataTypes.STRING,
-      allowNull: false
+    season :{
+      type : DataTypes.STRING,
+      allowNull : false
     }
 
   });

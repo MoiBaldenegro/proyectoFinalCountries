@@ -5,7 +5,7 @@ const countriesRouter = Router();
 
 
 countriesRouter.get("/", countriesGetHandler);
-countriesRouter.get("/:idPais", countriesIdGetHandler);
+countriesRouter.get("/:id", countriesIdGetHandler);
 countriesRouter.get("/name?=", countriesNameGetHandler);
 
 module.exports = countriesRouter;
