@@ -1,6 +1,7 @@
 //////////////////////////////////////////////////////////////////////////
 //////////////////////// HANDLER QUE TRAE A TODOS ////////////////////////
 //////////////////////////////////////////////////////////////////////////
+const { Op } = require("sequelize"); 
 
 const { searchCountryIdController, } = require("../controllers/countriesController");
 const { Country } = require("../db");
@@ -40,7 +41,7 @@ const countriesIdGetHandler = async (req, res)=>{
 const countriesNameGetHandler =  async (req, res)=>{
     const { name } = req.query;
     try {
-        const countryByName = await Country.findAll({where : {name : name}});
+        const countryByName = await Country.findAll({where : {name : { [Op.iLike] :`%${name}%`}}});
     res.status(200).json(countryByName); 
     } catch (error) {
         res.status(400).json({error : error.message}); 

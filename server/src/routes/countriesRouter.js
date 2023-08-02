@@ -3,9 +3,8 @@ const { countriesGetHandler, countriesIdGetHandler, countriesNameGetHandler } = 
 
 const countriesRouter = Router();
 
-
+countriesRouter.get("/name", countriesNameGetHandler);
 countriesRouter.get("/", countriesGetHandler);
 countriesRouter.get("/:id", countriesIdGetHandler);
-countriesRouter.get("/name?=", countriesNameGetHandler);
 
 module.exports = countriesRouter;
