@@ -1,14 +1,17 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import  Home  from "../src/pages/home/home";
+import Detail from "./pages/detail/detail";
+import CreateActivity from './pages/createActivity/createActivity';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <p>ADIOS MUNDO CRUEL</p>
+      <Home/>
+      <Detail/>
+      <CreateActivity/>
     </>
   )
 }
