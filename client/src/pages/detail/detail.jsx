@@ -1,6 +1,6 @@
 import  style  from "../detail/detail.module.css";
 
-export default function Deatil (){
+export default function Detail (){
 
     return (
         <div>
