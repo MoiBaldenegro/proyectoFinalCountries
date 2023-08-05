@@ -1,10 +1,11 @@
+
+const { Op } = require("sequelize"); 
+
+const { searchCountryIdController, searchCountryContinentController} = require("../controllers/countriesController");
+const { Country } = require("../db");
 //////////////////////////////////////////////////////////////////////////
 //////////////////////// HANDLER QUE TRAE A TODOS ////////////////////////
 //////////////////////////////////////////////////////////////////////////
-const { Op } = require("sequelize"); 
-
-const { searchCountryIdController, } = require("../controllers/countriesController");
-const { Country } = require("../db");
 
 const countriesGetHandler = async (req, res)=>{
     if(req.query.name){
@@ -16,9 +17,8 @@ const countriesGetHandler = async (req, res)=>{
             } catch (error) {
                 res.status(400).json({error : error.message}); 
             };    
-    };  
-    }
-    
+        };  
+    }  
 //////////////////////////////////////////////////////////////////////////
 //////////////////////// HANDLER QUE FILTRA POR ID ///////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -42,7 +42,7 @@ const countriesNameGetHandler =  async (req, res)=>{
     const { name } = req.query;
     try {
         const countryByName = await Country.findAll({where : {name : { [Op.iLike] :`%${name}%`}}});
-    res.status(200).json(countryByName); 
+        res.status(200).json(countryByName); 
     } catch (error) {
         res.status(400).json({error : error.message}); 
     };  
@@ -50,12 +50,23 @@ const countriesNameGetHandler =  async (req, res)=>{
 };
 
 ///////////////////////////////////////////////////////////////////////////
+////////////////// HANDLER QUE FILTRA POR CONTINENTE //////////////////////
 ///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
+const countriesContinentGetHandler = async (req, res)=>{
+    const { continent } = req.params;
+    try {
+        const response = await searchCountryContinentController(continent);
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(400).json({error : error.message});  
+    };
+
+};
 
 
 module.exports = {
     countriesGetHandler,
     countriesIdGetHandler,
-    countriesNameGetHandler
+    countriesNameGetHandler,
+    countriesContinentGetHandler
 };
