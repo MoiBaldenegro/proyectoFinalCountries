@@ -6,11 +6,15 @@ import Card from "./card/card";
 import style from "./cards.module.css";
 
 // ultima version
-export default function Cards(allCountries){
-    const countriesList = allCountries;
-    return(
-        <div>
-            {countriesList ?.map((country) => <Card country={country}/> )} 
-        </div>
-    )
+export default function Cards({allCountries}){
+    
+    if(allCountries){
+        return(
+            <div>
+                {allCountries?.map((country) => <Card key={country.id} country={country}/> )} 
+            </div>
+        )
+
+    }
+    
 };

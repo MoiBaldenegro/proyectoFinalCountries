@@ -7,7 +7,9 @@ import style from "./card.module.css";
 
 
 export default function Card({country}){
+
 const { name, id, continent, capital, subregion, area, population, flag} = country;
+
     return(
         <div>
             <h2> Name: {name} </h2>

@@ -1,5 +1,5 @@
 ////////// DEPENDENCIES /////////////////////
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 ////////// COMPONENTS /////////////////////
@@ -10,34 +10,53 @@ import MainSection from "../../components/mainSection/mainSection";
 import Footer from "../../components/footer/footer";
 
 ////////// ACTIONS ///////////////////////////
-import getCountries from "../redux/actions/index.js";
+import getCountries from "../../redux/actions/index.js";
 
 ////////// STYLES ///////////////////////////
 import  style  from "./home.module.css";
 
 
-const dispatch = useDispatch();
-const allCountries = useSelector((state) => state.allCountries);
+export default function Home(){
 
-useEffect(()=>{
-    dispatch(getCountries())
-     /* return (()=>{
-        clearCountries();
-    };*/
+    const dispatch = useDispatch();
+    const allCountries = useSelector((state) => state.allCountries);
+
+    const [searchText, setSearchText ] =  useState("");
+
+    const countryfilter = allCountries.filter((country) => 
+    country.name.includes(searchText)
+    );
+
+    function handleChange(event){
+        event.preventDefault();
+        setSearchText(event.target.value);
         
-    )
-}, [dispatch]);
+    }
 
-export default function Home (){
+     function handleSubmit(event){
+        event.preventDefault(event);
+     
+    };
 
-    return (
-        <div>
-            <h1> HOME PAGE</h1>
-            <Header/>
-            <NavBar/>
-            <Aside/>
-            <MainSection allCountries={allCountries} />
-            <Footer/>  
-        </div>
-    )
+    useEffect(()=>{
+        dispatch(getCountries())
+        /* return (()=>{
+            clearCountries();
+        };*/
+            
+        
+    }, [dispatch]);
+
+
+
+        return (
+            <div>
+                <h1> HOME PAGE</h1>
+                <Header/>
+                <NavBar handleChange={handleChange} handleSubmit={handleSubmit} />
+                <Aside/>
+                <MainSection allCountries={countryfilter} />
+                <Footer/>  
+            </div>
+        )
 };

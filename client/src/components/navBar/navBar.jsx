@@ -9,12 +9,14 @@ import style from "./navBar.module.css";
 
 
 
-export default function NavBar(){
+export default function NavBar({handleChange, handleSubmit}){
+     
+    
     return(
         <div>
-            <form action="">
-                <input type="text" placeholder="Search" />
-                <button> Search </button>
+            <form >
+                <input type="text" placeholder="Search" onChange={handleChange} />
+                <button type="button" onClick={handleSubmit} > Search </button>
             </form>
         </div>
     )
