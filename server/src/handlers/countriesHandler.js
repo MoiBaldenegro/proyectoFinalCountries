@@ -26,6 +26,7 @@ const countriesGetHandler = async (req, res)=>{
 const countriesIdGetHandler = async (req, res)=>{
     const { id } = req.params;
     try {
+        console.log(id);
         const response = await searchCountryIdController(id);
         res.status(200).json(response);
     } catch (error) {
