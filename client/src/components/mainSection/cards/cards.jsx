@@ -8,13 +8,13 @@ import style from "./cards.module.css";
 // ultima version
 export default function Cards({allCountries}){
     
-    if(allCountries){
-        return(
+    return(
             <div>
-                {allCountries?.map((country) => <Card key={country.id} country={country}/> )} 
+                {allCountries?.map((country) => <Card key={country.id} country={country}/> )}   
             </div>
-        )
+    )
+            
 
-    }
+    
     
 };

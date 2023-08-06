@@ -1,4 +1,4 @@
-import { GET_COUNTRIES } from "../actions";
+import { GET_COUNTRIES, GET_CONTINENT } from "../actions";
 
 
 
@@ -13,6 +13,12 @@ export default function rootReducer(state = initialState, action){
             };
         default:
             return state;
+        
+            case GET_CONTINENT:
+                return{
+                    ...state,
+                    allCountries: action.payload
+                }
 
     };
 

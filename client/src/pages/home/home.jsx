@@ -10,7 +10,7 @@ import MainSection from "../../components/mainSection/mainSection";
 import Footer from "../../components/footer/footer";
 
 ////////// ACTIONS ///////////////////////////
-import getCountries from "../../redux/actions/index.js";
+import getCountries, { getContinent } from "../../redux/actions/index.js";
 
 ////////// STYLES ///////////////////////////
 import  style  from "./home.module.css";
@@ -26,7 +26,10 @@ export default function Home(){
     const countryfilter = allCountries.filter((country) => 
     country.name.includes(searchText)
     );
-
+    function handleContinent(continent){
+        dispatch(getContinent(continent));
+    }
+    
     function handleChange(event){
         event.preventDefault();
         setSearchText(event.target.value);
@@ -35,6 +38,7 @@ export default function Home(){
 
      function handleSubmit(event){
         event.preventDefault(event);
+        dispatch(getCountries())
      
     };
 
@@ -52,11 +56,14 @@ export default function Home(){
         return (
             <div>
                 <h1> HOME PAGE</h1>
-                <Header/>
-                <NavBar handleChange={handleChange} handleSubmit={handleSubmit} />
-                <Aside/>
-                <MainSection allCountries={countryfilter} />
-                <Footer/>  
+                    <Header/>
+                    <NavBar handleChange={handleChange} 
+                            handleSubmit={handleSubmit}
+                         handleContinent={handleContinent}/>
+                    <Aside/>
+                    <MainSection allCountries={countryfilter} 
+                              />
+                    <Footer/>  
             </div>
         )
 };
