@@ -1,22 +1,71 @@
 //////// DEPENDENCIES ///////////////
-
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 //////// COMPONENTS /////////////////
 import Cards from "./cards/cards";
 
 //////// STYLES /////////////////////
 import style from "./mainSection.module.css";
+import getCountries from "../../redux/actions/index";
+
+/////// ACTIONS  //////////////////////
+import { switchPreviousPage } from "../../redux/actions/index";
 
 
 
-export default function MainSection({allCountries}){
-    
+export default function MainSection({allCountries, pagesFilter, nextPage, previousPage, continentFilter, countriesPage}){
+
+    const dispatch = useDispatch();
+    const paginationOnOff = useSelector((state) => state.paginationOnOff);
+
+    // for the previous page button
+    function dispatchActionPage(event){
+        dispatch(switchPreviousPage()); 
+    };
+
+    function shotFunction(){
+        dispatchActionPage();
+        previousPage()
+    };
+
+    // for the next page button
+
+    /*function dispatchActionPage(event){
+        dispatch(switchPreviousPage()); 
+    };*/
+
+    function shotFunctionsNext(){
+        dispatch(switchPreviousPage());
+        nextPage();
+    };
+
+    // for the page number One
+    function shotNumberOne(){
+        dispatch(switchPreviousPage());
+        
+
+    }
+
         return(
             <div>
-                <h4> Main Section </h4>
-                <Cards allCountries={allCountries}/>
-
+                <h4> Main Section </h4> 
+                <div>
+                    <button onClick={shotFunction}> Previous </button>
+                    <button onClick={shotNumberOne}> 1 </button>
+                    <button onClick={shotFunctionsNext}> Next page </button>
+                </div>
+                <div>
+                    
+                    {paginationOnOff === "allOn" ? <Cards allCountries={allCountries}/> : 
+                     paginationOnOff === "continentFilterOn" ? <Cards allCountries={continentFilter}/> : 
+                     paginationOnOff === "PaginationOn" ? <Cards allCountries={countriesPage}/> : null }
+                  
+                   
+                </div>
             </div>
-        )
+        );
     };
+
     
+
 

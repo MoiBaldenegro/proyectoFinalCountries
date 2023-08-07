@@ -1,6 +1,8 @@
 import { useState} from "react";
+import { useDispatch } from "react-redux";
 
 import style from "./createActivity.module.css";
+import { postActivity } from "../../redux/actions";
 
 
 
@@ -18,9 +20,6 @@ export default function CreateActivity(){
         duration: "",
         season: ""
     });
-
-
-    
 
     const nameActivityRegex = /^[a-zA-Z0-9\s-']{1,50}$/;
     
@@ -40,6 +39,11 @@ export default function CreateActivity(){
             name : ""
         });
     };
+    const dispatch = useDispatch();
+    function onSubmit(event){
+        event.preventDefault();
+        dispatch(postActivity(activity))
+    }
 
     function handleChange(event){
         setActivity({
@@ -57,7 +61,7 @@ export default function CreateActivity(){
 
     return(
         <div>
-            <form action="" onSubmit={""}>
+            <form action="" onSubmit={onSubmit}>
                 <h2> CREATE ACTIVITY </h2>
                     <input type="text" required
                            name="name" 

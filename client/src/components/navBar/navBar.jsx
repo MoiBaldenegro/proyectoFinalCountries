@@ -1,4 +1,5 @@
 //////// DEPENDENCIES ///////////////
+import { useDispatch } from "react-redux";
 
 //////// COMPONENTS /////////////////
 
@@ -6,12 +7,27 @@
 //////// STYLES /////////////////////
 import style from "./navBar.module.css";
 
+/////// ACTIONS ////////////////////7
+import { switchPageOnAction } from "../../redux/actions/index";
 
 
 
 export default function NavBar({handleChange, handleSubmit, handleContinent}){
-     
-    
+
+    const dispatch = useDispatch();
+
+    function FilterOrPagination(event){
+        dispatch(switchPageOnAction());
+       
+    }
+   const continentsValues = ["Africa", "Europe", "North America", "South America", "Oceania"];
+
+   function shotFunction(value){
+    console.log(value);
+    FilterOrPagination();
+    handleContinent(value)
+   };
+
     return(
         <div>
             <form >
@@ -19,13 +35,14 @@ export default function NavBar({handleChange, handleSubmit, handleContinent}){
                 <button type="button" onClick={handleSubmit} > Search </button>
             </form>
             <div>
-                    <button  onClick={function(){handleContinent("Africa")}}> Africa </button>
-                    <button  onClick={function(){handleContinent("Europe")}}> Europe </button>
-                    <button  onClick={function(){handleContinent("North America")}}> North America </button>
-                    <button  onClick={function(){handleContinent("South America")}}> South America </button>
-                    <button  onClick={function(){handleContinent("Oceania")}}> Oceania </button>
-                     
-                </div>
+           
+        {continentsValues.map((value, index) => (
+          <button key={index} onClick={() => shotFunction(value)}> {value} </button>
+        ))}
+      </div>
+            
         </div>
     )
 };
+
+
