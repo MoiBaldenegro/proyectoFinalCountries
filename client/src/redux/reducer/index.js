@@ -3,14 +3,17 @@ import { GET_COUNTRIES,
          COUNTRIES_PAGINATION, 
          PAGINATION_ON_OFF, 
          PAGINATION_ACTIVE,
-        RETURN_TO_ALL } from "../actions";
+         RETURN_TO_ALL,
+         REPLACE_PAGINATION
+        } from "../actions";
 
 
 let initialState = { allCountries : [],
                      backStateCountries : [],
                      actuallyPage: 0, 
                      allCountriesPage: [],
-                     paginationOnOff : "allOn"
+                     paginationOnOff : "allOn",
+                     pageValue: []
                    };
 
 export default function rootReducer(state = initialState, action){
@@ -41,6 +44,13 @@ export default function rootReducer(state = initialState, action){
             return{
                 ...state,
                 paginationOnOff: action.payload
+            }
+        case REPLACE_PAGINATION:
+            return{
+                ...state,
+                paginationOnOff: "pageValue",
+                pageValue: action.payload
+
             }
         /*case: COUNTRIES_PAGINATION:
             return{

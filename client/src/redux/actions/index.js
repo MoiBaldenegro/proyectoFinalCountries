@@ -6,6 +6,7 @@ export const COUNTRIES_PAGINATION = "COUNTRIES_PAGINATION";
 export const PAGINATION_ON_OFF = "PAGINATION_ON_OFF";
 export const PAGINATION_ACTIVE = "PAGINATION_ACTIVE";
 export const RETURN_TO_ALL = "RETURN_TO_ALL";
+export const REPLACE_PAGINATION =  "REPLACE_PAGINATION";
 
 export default function getCountries(){
     return async function(dispatch){
@@ -63,6 +64,13 @@ export function returnToAllOn(){
     return async function(dispatch){
         return dispatch({ type: RETURN_TO_ALL, payload: "allOn"})
     };
+};
+export function replacePagination(value){
+    return async function(dispatch){
+        return dispatch({ type: REPLACE_PAGINATION, payload: value})
+
+    };
+
 };
 
 

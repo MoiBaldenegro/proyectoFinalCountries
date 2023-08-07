@@ -12,6 +12,8 @@ import Footer from "../../components/footer/footer";
 ////////// ACTIONS AND FUNCTIONS ///////////////////////////
 import  getCountries from "../../redux/actions/index.js";
 import { returnToAllOn } from "../../redux/actions/index.js";
+import { replacePagination } from "../../redux/actions/index.js";
+
 ////////// STYLES ///////////////////////////
 import  style  from "./home.module.css";
 
@@ -47,6 +49,8 @@ export default function Home(){
     
      function handleSubmit(event){
         event.preventDefault();
+        alert(allCountries.length)
+
         dispatch(getCountries());
         dispatch(returnToAllOn());
     };
@@ -76,7 +80,11 @@ export default function Home(){
     };
 
     // Pagination per button page
-    const pagesFilter = allCountries.slice(0, 10);
+    const pagesFilter = allCountries.slice(0, countriesPerPage);
+    function pageFiltered(){
+        dispatch(replacePagination(pagesFilter));
+    };
+
 
 
     //////////////////////////////////////////////////////////////////
@@ -106,6 +114,7 @@ export default function Home(){
                                 countriesPage={countriesPage}
                               continentFilter={continentFilter}
                                   pagesFilter={pagesFilter}
+                                 pageFiltered={pageFiltered}
                                      nextPage={nextPage} 
                                  previousPage={previousPage} />
                     <Footer/>  
