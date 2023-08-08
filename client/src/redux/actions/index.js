@@ -9,6 +9,8 @@ export const RETURN_TO_ALL = "RETURN_TO_ALL";
 export const REPLACE_PAGINATION =  "REPLACE_PAGINATION";
 export const CARD_DETAIL_STATE = " CARD_DETAIL_STATE";
 export const SET_ACCES = "SET_ACCES"
+export const ADD_FAVORITE = "ADD_FAVORITE"
+export const DELETE_FAVORITE = "DELETE_FAVORITE"
 
 export default function getCountries(){
     return async function(dispatch){
@@ -87,6 +89,17 @@ export function cardDetailSelect(id){
 export function setAccess(value){
     return async function(dispatch){
         return dispatch({ type : SET_ACCES, payload : value})
-    }
-}
+    };
+};
+export function addFavorite(id){
+    return async function(){
+        return dispatch({ type : ADD_FAVORITE, payload : id})
+    };
+};
+
+export function deleteFavorite(id){
+    return async function(dispatch){
+        return({type : DELETE_FAVORITE, payload : id});
+    };
+};
 

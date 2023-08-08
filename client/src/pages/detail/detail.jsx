@@ -8,6 +8,7 @@ import  style  from "../detail/detail.module.css";
 
 export default function Detail (){
    
+    // AGREGAR EL USE EFFECT CON EL RETURN PARA LIMPIAR EL ESTADO GLOBAL DE LOS DETALLES
 
     return (
         <div>

@@ -47,7 +47,7 @@ export default function MainSection({allCountries, pagesFilter, pageFiltered,
                 <h4> Main Section </h4> 
                 <div>
                     <button onClick={shotFunction}> Previous </button>
-                        {[...Array(10)].map((_, index) => (
+                        {[...Array(15)].map((_, index) => (
                             <button key={index + 1} onClick={() => pageFiltered(index + 1)}>
                         {index + 1}
                      </button>

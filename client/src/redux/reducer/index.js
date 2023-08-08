@@ -6,7 +6,9 @@ import { GET_COUNTRIES,
          RETURN_TO_ALL,
          REPLACE_PAGINATION,
          CARD_DETAIL_STATE,
-         SET_ACCES
+         SET_ACCES,
+         ADD_FAVORITE,
+         DELETE_FAVORITE
 ,        } from "../actions";
 
 
@@ -17,7 +19,8 @@ let initialState = { allCountries : [],
                      paginationOnOff : "allOn",
                      pageValue: [],
                      cardDetailState: [],
-                     accessLog: false
+                     accessLog: true,
+                     favorites: []
                    };
 
 export default function rootReducer(state = initialState, action){
@@ -66,6 +69,16 @@ export default function rootReducer(state = initialState, action){
                 ...state,
                 accessLog: action.payload
             }
+         case  ADD_FAVORITE:
+            return {
+                ...state,
+                favorites : action.payload
+            }
+        case DELETE_FAVORITE:
+            return {
+                ...state,
+                favorites :  action.payload
+            };
         /*case: COUNTRIES_PAGINATION:
             return{
 
