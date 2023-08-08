@@ -8,6 +8,7 @@ export const PAGINATION_ACTIVE = "PAGINATION_ACTIVE";
 export const RETURN_TO_ALL = "RETURN_TO_ALL";
 export const REPLACE_PAGINATION =  "REPLACE_PAGINATION";
 export const CARD_DETAIL_STATE = " CARD_DETAIL_STATE";
+export const SET_ACCES = "SET_ACCES"
 
 export default function getCountries(){
     return async function(dispatch){
@@ -83,4 +84,9 @@ export function cardDetailSelect(id){
     };
 };
 
+export function setAccess(value){
+    return async function(dispatch){
+        return dispatch({ type : SET_ACCES, payload : value})
+    }
+}
 

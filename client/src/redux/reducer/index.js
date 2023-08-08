@@ -5,7 +5,8 @@ import { GET_COUNTRIES,
          PAGINATION_ACTIVE,
          RETURN_TO_ALL,
          REPLACE_PAGINATION,
-         CARD_DETAIL_STATE
+         CARD_DETAIL_STATE,
+         SET_ACCES
 ,        } from "../actions";
 
 
@@ -15,7 +16,8 @@ let initialState = { allCountries : [],
                      allCountriesPage: [],
                      paginationOnOff : "allOn",
                      pageValue: [],
-                     cardDetailState: []
+                     cardDetailState: [],
+                     accessLog: false
                    };
 
 export default function rootReducer(state = initialState, action){
@@ -58,6 +60,11 @@ export default function rootReducer(state = initialState, action){
             return{
                 ...state,
                 cardDetailState: action.payload
+            }
+        case SET_ACCES:
+            return{
+                ...state,
+                accessLog: action.payload
             }
         /*case: COUNTRIES_PAGINATION:
             return{
