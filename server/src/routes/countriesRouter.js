@@ -3,7 +3,7 @@ const { countriesGetHandler, countriesIdGetHandler, countriesNameGetHandler, cou
 
 const countriesRouter = Router();
 
-countriesRouter.get("/:continent", countriesContinentGetHandler);
+/*countriesRouter.get("/continent/:continent", countriesContinentGetHandler);*/
 countriesRouter.get("/name", countriesNameGetHandler);
 countriesRouter.get("/", countriesGetHandler);
 countriesRouter.get("/:id", countriesIdGetHandler);

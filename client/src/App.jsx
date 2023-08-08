@@ -21,7 +21,7 @@ function App() {
     
       <Routes>
           <Route path="/home" element={<Home/>} />
-          <Route path="/detail" element={<Detail/>} />
+          <Route path="/detail/:id" element={<Detail/>} />
           <Route path="/createActivity" element={<CreateActivity/>} />
           <Route path="/" element={<LandingPage/>} />
       </Routes>
