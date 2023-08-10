@@ -3,7 +3,7 @@ const { activitiesGetHandler, activitiesPostHandler } = require("../handlers/act
 
 const activitiesRouter = Router();
 
-activitiesRouter.post("/", activitiesPostHandler);
+activitiesRouter.post("/create", activitiesPostHandler);
 activitiesRouter.get("/", activitiesGetHandler)
 
 module.exports = activitiesRouter;

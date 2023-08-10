@@ -8,9 +8,11 @@ export const PAGINATION_ACTIVE = "PAGINATION_ACTIVE";
 export const RETURN_TO_ALL = "RETURN_TO_ALL";
 export const REPLACE_PAGINATION =  "REPLACE_PAGINATION";
 export const CARD_DETAIL_STATE = " CARD_DETAIL_STATE";
-export const SET_ACCES = "SET_ACCES"
-export const ADD_FAVORITE = "ADD_FAVORITE"
-export const DELETE_FAVORITE = "DELETE_FAVORITE"
+export const SET_ACCES = "SET_ACCES";
+export const ADD_FAVORITE = "ADD_FAVORITE";
+export const DELETE_FAVORITE = "DELETE_FAVORITE";
+export const MASTER_FILTER = "MASTER_FILTER";
+export const ORDER_POPULATION = "ORDER POPULATION"
 
 export default function getCountries(){
     return async function(dispatch){
@@ -91,15 +93,29 @@ export function setAccess(value){
         return dispatch({ type : SET_ACCES, payload : value})
     };
 };
-export function addFavorite(id){
-    return async function(){
-        return dispatch({ type : ADD_FAVORITE, payload : id})
+export function addFavorite(country){
+    return async function(dispatch){
+        return dispatch({ type : ADD_FAVORITE, payload : country})
     };
 };
 
 export function deleteFavorite(id){
     return async function(dispatch){
-        return({type : DELETE_FAVORITE, payload : id});
+        return dispatch({type : DELETE_FAVORITE, payload : id});
     };
 };
+
+export function handleOrderPopulation(order){
+    return async function(dispatch){
+        return dispatch({type: ORDER_POPULATION, payload : order})
+    };
+   
+};
+// tratando de aplicar full filtrados
+/*export function masterFilter(value){
+    return async function(dispatch){
+        return dispatch({ type :  MASTER_FILTER, payload : value})
+    }
+}*/
+
 

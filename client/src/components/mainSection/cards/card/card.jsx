@@ -1,7 +1,9 @@
 //////// DEPENDENCIES ////////////////
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+
 
 //////// COMPONENTS /////////////////
 
@@ -11,35 +13,53 @@ import { addFavorite, deleteFavorite } from "../../../../redux/actions";
 
 
 export default function Card({country}){
+    const { name, id, continent, flag} = country;
+    const favorites = useSelector((state)=> state.favorites);
+
+    useEffect(()=>{
+        favorites.forEach((country)=>{
+            if(country.id === id){
+                setIsFav(true);
+            }
+        })
+    }, [favorites]);
+
+
+
     const [isFav, setIsFav] = useState(false);
     const dispatch = useDispatch();
 
 
     function handleClick(country){
-        if(!isFav){
-           // dispatch(addFavorite(country))
+        if(isFav === false){
+           dispatch(addFavorite(country))
             setIsFav(true)
-        }else{ 
-       // dispatch(deleteFavoriteFavorite(country))  
+        } else{ 
+        (isFav === true) 
+        dispatch(deleteFavorite(country.id))  
         setIsFav(false)};
     }
    
 
-    const { name, id, continent, flag} = country;
+    
     return(
        
-        <div>
-             <Link to={`/detail/${id}`} >
-                <img src={flag} alt="Bandera" />
+        <div className={style.card}>
+            <div className={style.shadow}>
+            <Link to={`/detail/${id}`} >
+                <img src={flag} alt="Bandera"  className={style.img}/>
             </Link> 
             <h2> Name: {name} </h2>   
                     <h4> Continent: {continent} </h4>
                     { 
-                        isFav ? <button onClick={handleClick}> ⭐ </button> : 
-                                <button onClick={handleClick}>  ⚪  </button>
+                        isFav ? <button onClick={()=>{ handleClick(country)}}> ⭐ </button> : 
+                                <button onClick={()=>{ handleClick(country)}}>  ⚪  </button>
 
                     }
                     
+
+            </div>
+             
                     
         </div>
     )

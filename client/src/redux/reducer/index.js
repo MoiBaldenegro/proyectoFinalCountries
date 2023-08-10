@@ -8,8 +8,11 @@ import { GET_COUNTRIES,
          CARD_DETAIL_STATE,
          SET_ACCES,
          ADD_FAVORITE,
-         DELETE_FAVORITE
-,        } from "../actions";
+         DELETE_FAVORITE,
+         MASTER_FILTER,
+         ORDER_POPULATION,
+
+        } from "../actions";
 
 
 let initialState = { allCountries : [],
@@ -20,7 +23,8 @@ let initialState = { allCountries : [],
                      pageValue: [],
                      cardDetailState: [],
                      accessLog: true,
-                     favorites: []
+                     favorites: [],
+                     allCountriesFilter: []
                    };
 
 export default function rootReducer(state = initialState, action){
@@ -70,15 +74,55 @@ export default function rootReducer(state = initialState, action){
                 accessLog: action.payload
             }
          case  ADD_FAVORITE:
+            let copyCountries = [...state.allCountriesFilter, action.payload]
             return {
                 ...state,
-                favorites : action.payload
+                favorites : copyCountries, allCountriesFilter: [...copyCountries ]
+
             }
         case DELETE_FAVORITE:
             return {
                 ...state,
-                favorites :  action.payload
+                favorites :  state.favorites.filter((country)=>  country.id !== action.payload)
             };
+
+        case  ORDER_POPULATION:
+             let copyCountriesOrder = [...state.allCountriesFilter.sort((a,b)=>{
+                if(action.payload === "A"){
+                    if (a.population > b.population) {
+                        return 1;
+                    }
+                    if (a.population < b .population) {
+                      return -1  
+                    }
+                    return 0
+                }
+                if( action.payload === "B"){
+                    if (a.population > b.population) {
+                        return -1;
+                    }
+                    if (a.population < b.population ) {
+                      return 1  
+                    }
+                    return 0
+                }else{
+                    return 
+                    
+                }
+             })];
+             return{
+                ...state,
+                favorites: copyCountriesOrder
+             }
+            
+            
+
+    
+        /*case  MASTER_FILTER:
+            return {
+                ...state,
+                masterFilterState : action.payload 
+            }*/
         /*case: COUNTRIES_PAGINATION:
             return{
 

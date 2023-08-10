@@ -1,0 +1,37 @@
+
+/*
+
+.card{
+    border: solid 1px #000;
+    margin:  20px;
+    position: relative;
+    height: 28rem;
+    width: 20rem;
+    aspect-ratio: 0.7;
+    perspective: 50rem;
+    
+}
+
+.card .shadow{
+    background-color: aqua;
+    position: absolute;
+    opacity: 0.8;
+    inset: 0;
+    filter:blur(2rem) saturate(0.9);
+    box-shadow: 0 -1.5rem 2rem -0.5rem #000;
+    transform: rotateX('angle') rotateY('angle') translate3d(0, 2rem, -2rem);
+}
+
+.img{
+    position: absolute;
+    inset: 0;
+    background: #000;
+}
+.card::after,
+.card::before{
+    content: "";
+    position: absolute;
+    inset: 1.5rem;
+    border: yellow 0.5rem solid;
+}
+ */

@@ -28,10 +28,18 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Country, Activity } = sequelize.models;
+const { Country, Activity, User } = sequelize.models;
 
 Country.belongsToMany(Activity, {through: "countryXActivity"});
 Activity.belongsToMany(Country, {through: "countryXActivity"});
+
+
+User.belongsToMany(Country, {through: "FavoritesToUser"});
+Country.belongsToMany(User, {through: "FavoritesToUser"});
+
+
+User.belongsToMany(Activity, {through: "FavoritesToActivities"});
+Activity.belongsToMany(User, {through: "FavoritesToActivities"});
 
 
 
