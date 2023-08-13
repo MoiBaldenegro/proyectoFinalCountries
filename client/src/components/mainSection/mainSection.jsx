@@ -43,8 +43,7 @@ export default function MainSection({allCountries, pagesFilter, pageFiltered,
    
 
         return(
-            <div>
-                <h4> Main Section </h4> 
+            <div className={style.mainSection}>
                 <div>
                     <button onClick={shotFunction}> Previous </button>
                         {[...Array(15)].map((_, index) => (

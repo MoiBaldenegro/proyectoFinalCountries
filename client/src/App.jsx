@@ -31,7 +31,7 @@ function App() {
     <div className={style.gridContainer}>
       
       <Routes>
-            <Route path="/home" element={<Home/>} />
+            <Route path="/home" element={<Home className={style.home} />} />
             <Route path="/detail/:id" element={<Detail/>} />
             <Route path="/create/activity" element={<CreateActivity/>} />
             <Route path="/create/account" element={<CreateAccount/>} />

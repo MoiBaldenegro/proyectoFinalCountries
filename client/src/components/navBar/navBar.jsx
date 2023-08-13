@@ -56,7 +56,7 @@ export default function NavBar({handleChange, handleSubmit, handleContinent}){
    };
 
     return(
-        <div>
+        <div className={style.searchBar}>
             <div>
                 <form action="">
                     <label htmlFor="">

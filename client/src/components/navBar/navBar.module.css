@@ -1,0 +1,6 @@
+.searchBar{
+    background-color: rgba(255, 255, 0, 0.363);
+    display: flex;
+    grid-column: 1 / 5;
+    grid-row: 2 / 3;
+}

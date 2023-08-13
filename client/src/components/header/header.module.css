@@ -1,7 +1,9 @@
 
-
 .header{
+    display: flex;
+    background-color: rgba(0, 255, 255, 0.397);
     grid-column: 1 / 5;
-    grid-row: 2 / 3;
+    grid-row: 1 / 2;
     border: solid 1px #000;
+    width: 100%;
 }

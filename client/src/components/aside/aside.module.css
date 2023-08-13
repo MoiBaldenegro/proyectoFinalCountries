@@ -1,0 +1,5 @@
+.aside{
+    background-color: rgba(137, 43, 226, 0.404);
+    grid-column: 1/2;
+    grid-row: 3 / 4;
+}
