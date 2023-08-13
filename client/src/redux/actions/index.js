@@ -112,6 +112,19 @@ export function handleOrderPopulation(order){
     };
    
 };
+export function createAccount(account){
+    return async function (dispatch){
+        console.log(account.username)
+        console.log(account.email)
+        console.log(account.password)
+        try {
+            const response = await axios.post("http://localhost:3001/users/create", account)
+            alert(" Cuenta se ha acreado con exito mi rey")   
+        } catch (error) {
+            alert(error.response.data.error);
+        };
+    };
+};
 
 // tratando de aplicar full filtrados
 /*export function masterFilter(value){

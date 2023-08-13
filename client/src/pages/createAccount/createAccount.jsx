@@ -1,8 +1,10 @@
 import style from "./createAccount.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { createAccount } from "../../redux/actions";
 
 export default function CreateAccount() {
+    const dispatch = useDispatch();
     const [account, setAccount] = useState({
         username: "",
         email: "",
@@ -10,17 +12,18 @@ export default function CreateAccount() {
     });
 
     function handleChange(event) {
+        console.log(account)
         const { name, value } = event.target;
         setAccount((accountData) => ({
-            ...accountData,
+            ...account,
             [name]: value
         }));
     }
 
-   /* function handleSubmit(event) {
+    function handleSubmit(event) {
         event.preventDefault();
-        dispatch*/
-
+        dispatch(createAccount(account))
+    }
 
     return (
         <div>
@@ -44,7 +47,7 @@ export default function CreateAccount() {
                     />
                     <br />
                     <input
-                        type="text"
+                        type="password"
                         placeholder="Password"
                         name="password"
                         value={account.password}
@@ -52,7 +55,7 @@ export default function CreateAccount() {
                     />
                     <br />
                     <button type="submit">Login</button>
-                    <button type="submit">Create account</button>
+                    <button onClick={handleSubmit}>Create account</button>
                     
                 </form>
             </div>
