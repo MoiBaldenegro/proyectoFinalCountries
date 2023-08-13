@@ -8,10 +8,11 @@ import { useEffect } from "react";
 import  Home  from "../src/pages/home/home";
 import Detail from "./pages/detail/detail";
 import CreateActivity from './pages/createActivity/createActivity';
+import CreateAccount from "./pages/createAccount/createAccount";
 import LandingPage from './pages/landing/landing';
 import LoginPage from "./pages/loginPage/loginPage";
 /////////// STYLES ///////////////////////
-import './App.css';
+import style from './App.css';
 import Favorites from "./pages/favorites/favorites";
 
 
@@ -27,17 +28,20 @@ function App() {
 }, [access])
 
   return (
-    <>
-    
+    <div className={style.gridContainer}>
+      
       <Routes>
-          <Route path="/home" element={<Home/>} />
-          <Route path="/detail/:id" element={<Detail/>} />
-          <Route path="/createActivity" element={<CreateActivity/>} />
-          <Route path="/" element={<LandingPage/>} />
-          <Route path="/login" element={ <LoginPage/>} />
-          <Route path="/favorites" element={ <Favorites/>} />
-      </Routes>
-    </> 
+            <Route path="/home" element={<Home/>} />
+            <Route path="/detail/:id" element={<Detail/>} />
+            <Route path="/create/activity" element={<CreateActivity/>} />
+            <Route path="/create/account" element={<CreateAccount/>} />
+            <Route path="/" element={<LandingPage/>} />
+            <Route path="/login" element={ <LoginPage/>} />
+            <Route path="/favorites" element={ <Favorites/>} />
+            
+        </Routes>
+ 
+    </div> 
     
   )
 }

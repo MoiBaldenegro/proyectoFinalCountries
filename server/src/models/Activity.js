@@ -15,15 +15,15 @@ module.exports = (sequelize) => {
       allowNull : false
     },
     difficulty: {
-      type : DataTypes.INTEGER,
+      type : DataTypes.INTEGER(1),
       allowNull: false
     },
     duration : {
-      type : DataTypes.INTEGER
+      type : DataTypes.INTEGER(2)
   
     },
     season :{ 
-      type : DataTypes.STRING,
+      type : DataTypes.JSON,
       allowNull : false
     },
     });

@@ -5,11 +5,11 @@ module.exports = (Sequelize)=> {
     Sequelize.define( "User", {
 
     id: { 
-        type : DataTypes.BIGINT,
+        type : DataTypes.INTEGER,
         unique: true,
         primaryKey: true,
         autoIncrement: true,
-        defaultValue: 50016001
+        initialAutoIncrement: 50016001
         
     },
     username:{

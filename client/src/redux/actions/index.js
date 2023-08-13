@@ -31,10 +31,11 @@ export function getContinent(continent){
 };
 
 export function postActivity(activity){
+    console.log(activity)
     return async function(dispatch){
         try {
-            const response = await axios.post("http://localhost:3001/activities", activity)
-            alert(" El usuario se ha acreado con exito mi rey")   
+            const response = await axios.post("http://localhost:3001/activities/create", activity)
+            alert(" actividad creada se ha acreado con exito mi rey")   
         } catch (error) {
             alert(error.response.data.error);
         };
@@ -111,6 +112,7 @@ export function handleOrderPopulation(order){
     };
    
 };
+
 // tratando de aplicar full filtrados
 /*export function masterFilter(value){
     return async function(dispatch){

@@ -103,12 +103,13 @@ export default function Home(){
     }, [allCountries]);*/
 
         return (
-            <div>
-                <h1> HOME PAGE</h1>
+            <div className={style.home}>
+                <div>
+                <h1 className={style.banner}> HOME PAGE</h1>
                     <Header/>
                     <NavBar handleChange={handleChange} 
                             handleSubmit={handleSubmit}
-                         handleContinent={handleContinent}/>
+                         handleContinent={handleContinent} />
                     <Aside/>
                     <MainSection allCountries={countryfilter} 
                                 countriesPage={countriesPage}
@@ -117,7 +118,10 @@ export default function Home(){
                                  pageFiltered={pageFiltered}
                                      nextPage={nextPage} 
                                  previousPage={previousPage} />
-                    <Footer/>  
+                    <Footer/> 
+
+                </div>
+                 
             </div>
         );
 };

@@ -1,0 +1,15 @@
+.countriesContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .scrollContent {
+    max-height: 400px; /* Altura máxima del contenido con scrolling */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
