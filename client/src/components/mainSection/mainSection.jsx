@@ -44,6 +44,15 @@ export default function MainSection({allCountries, pagesFilter, pageFiltered,
 
         return(
             <div className={style.mainSection}>
+                <div className={style.cardsContainer}>
+                    
+                    {paginationOnOff === "allOn" ? <Cards allCountries={allCountries}/> : 
+                     paginationOnOff === "continentFilterOn" ? <Cards allCountries={continentFilter}/> : 
+                     paginationOnOff === "PaginationOn" ? <Cards allCountries={countriesPage}/> : 
+                     paginationOnOff === "pageValue" ? <Cards allCountries={pagesFilter}/> : null}
+                  
+                   
+                </div>
                 <div>
                     <button onClick={shotFunction}> Previous </button>
                         {[...Array(15)].map((_, index) => (
@@ -54,31 +63,10 @@ export default function MainSection({allCountries, pagesFilter, pageFiltered,
                     
                     <button onClick={shotFunctionsNext}> Next page </button>
                 </div>
-                <div>
-                    
-                    {paginationOnOff === "allOn" ? <Cards allCountries={allCountries}/> : 
-                     paginationOnOff === "continentFilterOn" ? <Cards allCountries={continentFilter}/> : 
-                     paginationOnOff === "PaginationOn" ? <Cards allCountries={countriesPage}/> : 
-                     paginationOnOff === "pageValue" ? <Cards allCountries={pagesFilter}/> : null}
-                  
-                   
-                </div>
             </div>
         );
     };
-    /*
-                    <button onClick={pageFiltered}> 1 </button>
-                    <button onClick={pageFiltered}> 2 </button>
-                    <button onClick={pageFiltered}> 3 </button>
-                    <button onClick={pageFiltered}> 4 </button>
-                    <button onClick={pageFiltered}> 5 </button>
-                    <button onClick={pageFiltered}> 6 </button>
-                    <button onClick={pageFiltered}> 7 </button>
-                    <button onClick={pageFiltered}> 8 </button>
-                    <button onClick={pageFiltered}> 9 </button>
-                    <button onClick={pageFiltered}> 10 </button>
-        */
-
+   
     
 
 

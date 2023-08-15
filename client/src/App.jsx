@@ -37,8 +37,7 @@ function App() {
             <Route path="/create/account" element={<CreateAccount/>} />
             <Route path="/" element={<LandingPage/>} />
             <Route path="/login" element={ <LoginPage/>} />
-            <Route path="/favorites" element={ <Favorites/>} />
-            
+            <Route path="/favorites" element={ <Favorites/>} />   
         </Routes>
  
     </div> 

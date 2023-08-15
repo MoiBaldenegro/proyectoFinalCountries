@@ -9,7 +9,7 @@ import style from "./cards.module.css";
 export default function Cards({allCountries}){
     
     return(
-            <div>
+            <div className={style.cardsContainer}>
                 {allCountries?.map((country) => <Card key={country.id} country={country}/> )}   
             </div>
     )

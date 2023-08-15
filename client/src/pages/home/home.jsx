@@ -105,6 +105,7 @@ export default function Home(){
         return (
             <div className={style.home}>
                 <div className={style.grid}>
+                    <h1 className={style.banner}> BANNER DE BIENVENIDA </h1>
                     <Header className={style.header}/>
                     <NavBar handleChange={handleChange} 
                             handleSubmit={handleSubmit}

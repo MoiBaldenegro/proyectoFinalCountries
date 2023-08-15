@@ -1,7 +1,14 @@
 .mainSection{
-    background-color: rgba(0, 0, 255, 0.295);
-    border:solid 1px #000 ;
+    background-color: #000;
+    width: 100%;
+    position: sticky;
+    top: 300px;
     display: flex;
     grid-column: 2/ 5;
-    grid-row: 3 / 4;
+    grid-row: 4/ 5;
+    flex-wrap: wrap;
+};
+
+.cardsContainer{
+    background-color: red;
 }

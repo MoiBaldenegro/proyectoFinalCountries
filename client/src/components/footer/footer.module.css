@@ -1,7 +1,11 @@
 
 .footer{
-    background-color: rgba(165, 42, 42, 0.336);
-    border: solid 1px #000;
+    width: 100%;
+    background: #10002b;
+    margin: 2.5px;
     grid-column: 1 / 5;
-    grid-row: 4 / 5;
+    grid-row: 5 / 6;
+    border: solid 1px #fff;
+    border-radius: 20px;
+    position: relative;
 }

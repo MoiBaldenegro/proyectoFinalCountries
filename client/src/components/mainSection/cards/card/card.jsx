@@ -1,5 +1,5 @@
 //////// DEPENDENCIES ////////////////
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -46,18 +46,17 @@ export default function Card({country}){
        
         <div className={style.card}>
             <div className={style.shadow}>
-            <Link to={`/detail/${id}`} >
-                <img src={flag} alt="Bandera"  className={style.img}/>
-            </Link> 
-            <h2> Name: {name} </h2>   
-                    <h4> Continent: {continent} </h4>
-                    { 
-                        isFav ? <button onClick={()=>{ handleClick(country)}}> ⭐ </button> : 
-                                <button onClick={()=>{ handleClick(country)}}>  ⚪  </button>
+                <NavLink to={`/detail/${id}`}  >
+                    <img src={flag} alt="Bandera" className={style.flag} />
+                </NavLink> 
+                <h2 className={style.name}> {name} </h2>   
+                        <h4 className={style.continent}>  {continent} </h4>
+                        { 
+                            isFav ? <button  className={style.favButton} onClick={()=>{ handleClick(country)}}> ⭐ </button> : 
+                                    <button  className={style.favButton} onClick={()=>{ handleClick(country)}}>  ⚪  </button>
 
-                    }
-                    
-
+                        }
+                        
             </div>
              
                     

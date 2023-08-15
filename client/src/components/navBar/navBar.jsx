@@ -57,19 +57,8 @@ export default function NavBar({handleChange, handleSubmit, handleContinent}){
 
     return(
         <div className={style.searchBar}>
-            <div>
-                <form action="">
-                    <label htmlFor="">
-                        <input type="radio" name="page"/>
-                    </label>
-                    <label htmlFor="">
-                        
-                        <input type="radio"name="view" />
-                    </label>
-                    <label htmlFor="">
-                        <input type="radio" name="view" />
-                    </label>
-                    <div>
+                <form className={style.ordered} action="">
+                    <div >
                         <h4> Population order </h4>
                         <select name=" " id="" onChange={handleChangeOrder}>
                             <option value="none">  NONE  </option>
@@ -84,8 +73,7 @@ export default function NavBar({handleChange, handleSubmit, handleContinent}){
                         </select>
                     </div>
                 </form>
-            </div>
-            <form >
+            <form  className={style.Bar}>
                 <input type="search" placeholder="Country Name" onChange={handleChange} />
                 <button type="button" onClick={handleSubmit} > Search </button>
             </form>
