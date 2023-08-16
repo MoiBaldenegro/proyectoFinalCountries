@@ -1,10 +1,8 @@
 
 .header{
     display: flex;
-    background: rgb(90,24,154);
-    background: linear-gradient(0deg, rgba(90,24,154,1) 0%, rgba(157,78,221,1) 47%);
+    background-color: #124577;
     margin: 2.5px;
-    border: solid 1px #e0aaff;
     border-radius: 20px;
     margin: 2.5px;
     position: sticky;

@@ -80,10 +80,6 @@ function handleChange(event){
                          <button className={style.loginButton} type="submit">Login </button>
                             
                         </div>
-                        
-                        
-                        
-
                         <div className={style.errors}>
                         
                         {errorsForm.email ? (

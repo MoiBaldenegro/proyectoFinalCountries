@@ -17,7 +17,6 @@ import { replacePagination } from "../../redux/actions/index.js";
 ////////// STYLES ///////////////////////////
 import  style  from "./home.module.css";
 
-
 export default function Home(){
 
     const dispatch = useDispatch(); 
@@ -105,7 +104,17 @@ export default function Home(){
         return (
             <div className={style.home}>
                 <div className={style.grid}>
-                    <h1 className={style.banner}> BANNER DE BIENVENIDA </h1>
+                    <div className={style.banner}>
+                        <div className={style.bannerDivs}> 
+                            <h1 className={style.logoTittle}> <b className={style.acento} >G</b>LOBE <b className={style.acento}>V</b>ERSE </h1>
+                        </div >
+                        <div className={style.bannerDivs}>
+                            <h2> WELCOME TO MY PROJECT
+                            </h2>
+                            <h3> Poyecto individual " Cuntries " HENRY</h3>
+                            <h4> AGOSTO 2023 Cohorte FT40a </h4>
+                        </div>                      
+                    </div>
                     <Header className={style.header}/>
                     <NavBar handleChange={handleChange} 
                             handleSubmit={handleSubmit}

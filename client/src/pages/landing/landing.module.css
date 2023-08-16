@@ -107,6 +107,7 @@
 }
 
 
+
 .landing::after {
   content: '';
   border-top-left-radius: 50% 100%;
