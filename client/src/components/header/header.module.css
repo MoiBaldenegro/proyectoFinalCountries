@@ -1,7 +1,7 @@
 
 .header{
     display: flex;
-    background-color: #124577;
+    background-color: #12457741;
     margin: 2.5px;
     border-radius: 20px;
     margin: 2.5px;
@@ -13,4 +13,24 @@
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
+}
+.navigation{
+    --purple: #c9c8f3;
+  font-size: 16px;
+  padding: 8px 20px;
+  letter-spacing: 2px;
+  position: relative;
+  font-family: inherit;
+  overflow: hidden;
+  transition: all 0.3s;
+  line-height: 1.4em;
+  background: transparent;
+  color: var(--purple);
+  text-decoration: none;
+  font-size: 22px;
+  transition: 200ms;
+
+}
+.navigation:hover{
+    color: #000000b6;
 }

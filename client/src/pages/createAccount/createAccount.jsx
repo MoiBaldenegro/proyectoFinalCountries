@@ -2,6 +2,7 @@ import style from "./createAccount.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createAccount } from "../../redux/actions";
+import { NavLink } from "react-router-dom";
 
 export default function CreateAccount() {
     const dispatch = useDispatch();
@@ -20,17 +21,15 @@ export default function CreateAccount() {
         }));
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
+    function handleSubmit(account) {
         dispatch(createAccount(account))
     }
 
     return (
-        <div>
-            <div>
-                <h1> CREATE ACCOUNT </h1>
-                <form action="">
-                    <input
+        <div className={style.container}>
+            <div className={style.boxCreate} >
+                <h1 className={style.tittle}> <b className={style.G}>C</b>REATE <b className={style.G}>A</b>CCOUNT </h1>
+                    <input className={style.userBox}
                         placeholder="Username"
                         type="text"
                         name="username"
@@ -38,7 +37,7 @@ export default function CreateAccount() {
                         onChange={handleChange}
                     />
                     <br />
-                    <input
+                    <input className={style.userBox}
                         type="text"
                         placeholder="Email"
                         name="email"
@@ -46,7 +45,7 @@ export default function CreateAccount() {
                         onChange={handleChange}
                     />
                     <br />
-                    <input
+                    <input className={style.userBox}
                         type="password"
                         placeholder="Password"
                         name="password"
@@ -54,10 +53,8 @@ export default function CreateAccount() {
                         onChange={handleChange}
                     />
                     <br />
-                    <button type="submit">Login</button>
-                    <button onClick={handleSubmit}>Create account</button>
+                    <NavLink className={style.createButton} onClick={(e)=>{handleSubmit(account)}} to="/login" > Create account </NavLink>
                     
-                </form>
             </div>
         </div>
     );

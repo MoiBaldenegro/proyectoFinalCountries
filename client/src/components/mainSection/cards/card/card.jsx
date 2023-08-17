@@ -46,7 +46,7 @@ export default function Card({country}){
        
         <div className={style.card}>
             <div className={style.shadow}>
-                <NavLink to={`/detail/${id}`}  >
+                <NavLink className={style.navFlag} to={`/detail/${id}`}  >
                     <img src={flag} alt="Bandera" className={style.flag} />
                 </NavLink> 
                 <h2 className={style.name}> {name} </h2>   

@@ -12,10 +12,10 @@ import style from "./header.module.css";
 export default function Header(){
     return(
         <div className={style.header}>
-            <Link to="/favorites">--  Favorites ⭐ --  </Link>
-            <Link to="/home">  Home 🧿 --  </Link>
-            <Link to="/activities">  Activities ✈ --  </Link>
-            <Link to="/contact">  Contact 📞 --  </Link>    
+            <Link  className={style.navigation}  to="/favorites">Favorites ⭐</Link>
+            <Link className={style.navigation} to="/home">  Home 🧿</Link>
+            <Link className={style.navigation} to="/activities"> Activities ✈ </Link>
+            <Link className={style.navigation} to="/contact"> Contact 📞 </Link>    
         </div>
     )
 }

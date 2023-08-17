@@ -19,43 +19,52 @@ import  style  from "./home.module.css";
 
 export default function Home(){
 
+
+      
+
     const dispatch = useDispatch(); 
     const allCountries = useSelector((state) => state.allCountries);
+    const allcontriesFilter = useSelector(state => state.allCountriesFilter);
+    
 
     const [searchText, setSearchText ] =  useState("");
     const [searchContinent, setSearchContinent ]= useState([]);
 
-
-    // Filtered by name in real time
-    const countryfilter = allCountries.filter((country) => 
-    country.name.includes(searchText));
 
     function handleChange(event){
         event.preventDefault();
         setSearchText(event.target.value);  
     };
     
-    //  filtered by continents //
-    /* continent filter is an array of objects,of the countries
-     that match the continent that I want to filter */
-    const continentFilter = allCountries.filter((country) => 
-    country.continent === searchContinent);
 
+    const filteredCoutries = (continentData)=>{
+        if(typeof continentData === "string") return country => country.continent === continentData
+        else return country => country 
+    }
+    const continentFilter = allCountries
+        .filter(filteredCoutries(allcontriesFilter))
+        .filter((country) =>country.name.includes(searchText)); 
+
+
+    
+    
+/*
     function handleContinent(continent){
         setSearchContinent(continent);
     };
-    
+     */
     
      function handleSubmit(event){
         event.preventDefault();
-        alert(allCountries.length)
 
         dispatch(getCountries());
         dispatch(returnToAllOn());
     };
 
+   
+
     //////////////////////////////////////////////////////////////////
-    //////////////////// COUNTRIES PAGINATION ////////////////////////
+    //////////////////// COUNTRIES PAGINATION   ////////////////////////
     //////////////////////////////////////////////////////////////////
     const countriesPerPage = 10;
     const [ countriesPage, setCountriesPage ] = useState([ ...allCountries ].splice(countriesPerPage));
@@ -118,9 +127,9 @@ export default function Home(){
                     <Header className={style.header}/>
                     <NavBar handleChange={handleChange} 
                             handleSubmit={handleSubmit}
-                         handleContinent={handleContinent} />
+                             />
                     <Aside/>
-                    <MainSection allCountries={countryfilter} 
+                    <MainSection allCountries={continentFilter} 
                                 countriesPage={countriesPage}
                               continentFilter={continentFilter}
                                   pagesFilter={pagesFilter}

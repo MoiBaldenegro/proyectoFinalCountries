@@ -110,8 +110,8 @@ function handleChangeCountries(countryName){
     }
 
     return(
-        <div>
-            
+        <div className={style.formActivities}>
+            <div className={style.formContainerOne}>
                 <h2> CREATE ACTIVITY </h2>
                     <input type="text" required
                            name="name" 
@@ -129,7 +129,8 @@ function handleChangeCountries(countryName){
                             step={1}
                             value={activity.value}
                             onChange={handleChange} />
-                            { activity.difficulty > 0 && activity.difficulty  < 2 ? <h5 style={{ color: '#3498db', fontSize: '18px', fontWeight: 'bold' }} > {difficulties[0]} </h5> : 
+                            { 
+                              activity.difficulty > 0 && activity.difficulty  < 2 ? <h5 style={{ color: '#3498db', fontSize: '18px', fontWeight: 'bold' }} > {difficulties[0]} </h5> : 
                               activity.difficulty > 1 && activity.difficulty  < 3 ? <h5 style={{ color: '#27ae60', fontSize: '18px', fontWeight: 'bold' }}> {difficulties[1]} </h5> : 
                               activity.difficulty > 2 && activity.difficulty  < 4 ? <h5 style={{ color: '#f39c12', fontSize: '18px', fontWeight: 'bold' }}> {difficulties[2]} </h5> :  
                               activity.difficulty > 3 && activity.difficulty  < 5 ? <h5 style={{ color: '#e74c3c', fontSize: '18px', fontWeight: 'bold' }}> {difficulties[3]} </h5> : 
@@ -137,7 +138,7 @@ function handleChangeCountries(countryName){
                             }
                             <br />
                             <label> Activity time </label> <br />
-                            <select name="duration" id="" onChange={handleChange}>
+                            <select className={style.buttonActivities} name="duration" id="" onChange={handleChange}>
                             {[...Array(24)].map((_, index) => (
                             <option key={index + 1} value={index + 1}>
                                 {index + 1} hours
@@ -157,31 +158,39 @@ function handleChangeCountries(countryName){
                         </label>
                             ))}
                         </div>
-                      <button onClick={selectCountries}> Add countries </button>
-                      <div className={style.countriesContainer}>
-                        <div className={style.scrollContent}>
-                      {addCountry === true ? (
-                                <div>
-                                    {allCountries.map((country) => (
-                                    <div key={country.name}>
-                                        <input
-                                        type="checkbox"
-                                        value={country.name}
-                                        checked={activity.country.includes(country.name)}
-                                        onChange={() => handleChangeCountries(country.name)}
-                                        />
-                                        {country.name}
-                                    </div>
-                                    ))}
-                                </div>
-                                ) : null}
-                            </div>
-                      </div> 
-                <button onClick={onSubmit}> Create </button>
-            <br /><br />
-            <div>
+                      <button className={style.buttonActivities} onClick={selectCountries}> Add countries </button>
+                      <button className={style.buttonActivities}  onClick={onSubmit}> Create </button>
+             <br /><br />
+             <div>
                 <span>{errorActivity.name}</span>
             </div>
+                      
+            </div>
+            <div className={style.formContainerTwo}>
+                               
+                            {addCountry === true ? (
+                                        <div  className={style.checks} >
+                                            {allCountries.map((country) => (
+                                            <div className={style.checkboxItem} key={country.name}>
+                                                <input
+                                                type="checkbox"
+                                                value={country.name}
+                                                checked={activity.country.includes(country.name)}
+                                                onChange={() => handleChangeCountries(country.name)}
+                                                />
+                                                {country.name}
+                                            </div>
+                                            ))}
+                                        </div>
+                                        ) : null}
+                                    
+             </div> 
+            
+              
+                   
+            
+              
+           
         </div>
     )
 }

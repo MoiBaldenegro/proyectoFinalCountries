@@ -11,6 +11,10 @@ import { GET_COUNTRIES,
          DELETE_FAVORITE,
          MASTER_FILTER,
          ORDER_POPULATION,
+         SET_CONTINENT_FILTER,
+         SET_ORDER_ALPHABETIC,
+         SET_POPULATION_ORDER,
+         GET_ACTIVITIES
 
         } from "../actions";
 
@@ -24,7 +28,8 @@ let initialState = { allCountries : [],
                      cardDetailState: [],
                      accessLog: true,
                      favorites: [],
-                     allCountriesFilter: []
+                     allCountriesFilter: null,
+                     getActivities: []
                    };
 
 export default function rootReducer(state = initialState, action){
@@ -71,13 +76,7 @@ export default function rootReducer(state = initialState, action){
         case SET_ACCES:
             return{
                 ...state,
-                accessLog: action.payload
-            }
-         case  ADD_FAVORITE:
-            let copyCountries = [...state.allCountriesFilter, action.payload]
-            return {
-                ...state,
-                favorites : copyCountries, allCountriesFilter: [...copyCountries ]
+                favorites : copyCountries, allCountries: [...copyCountries ]
 
             }
         case DELETE_FAVORITE:
@@ -110,27 +109,39 @@ export default function rootReducer(state = initialState, action){
                     
                 }
              })];
+
+
              return{
                 ...state,
                 favorites: copyCountriesOrder
              }
             
-            
-
-    
-        /*case  MASTER_FILTER:
-            return {
-                ...state,
-                masterFilterState : action.payload 
-            }*/
-        /*case: COUNTRIES_PAGINATION:
+        
+        case SET_CONTINENT_FILTER:
             return{
-
-
-            }*/
+                ...state,
+                allCountriesFilter: action.payload
+            }
         
         default:
             return state;
+        
+        
+        case SET_ORDER_ALPHABETIC:
+            return{
+                ...state,
+                allCountriesFilter: action.payload
+            }
+        case SET_POPULATION_ORDER:
+            return {
+                ...state,
+                allCountries: action.payload
+            }
+        case GET_ACTIVITIES:
+            return{
+                ...state,
+                getActivities : action.payload
+            }
         
             
 

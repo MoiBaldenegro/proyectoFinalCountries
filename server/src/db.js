@@ -34,12 +34,9 @@ Country.belongsToMany(Activity, {through: "countryXActivity"});
 Activity.belongsToMany(Country, {through: "countryXActivity"});
 
 
-User.belongsToMany(Country, {through: "FavoritesToUser"});
-Country.belongsToMany(User, {through: "FavoritesToUser"});
 
 
-User.belongsToMany(Activity, {through: "FavoritesToActivities"});
-Activity.belongsToMany(User, {through: "FavoritesToActivities"});
+
 
 
 

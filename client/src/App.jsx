@@ -14,6 +14,7 @@ import LoginPage from "./pages/loginPage/loginPage";
 /////////// STYLES ///////////////////////
 import style from './App.css';
 import Favorites from "./pages/favorites/favorites";
+import Activities from "./pages/activities/activities";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/" element={<LandingPage/>} />
             <Route path="/login" element={ <LoginPage/>} />
             <Route path="/favorites" element={ <Favorites/>} />   
+            <Route path="/activities" element={ <Activities/>} /> 
         </Routes>
  
     </div> 

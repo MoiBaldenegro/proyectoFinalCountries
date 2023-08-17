@@ -13,7 +13,7 @@
     color:#fff;
     justify-content: space-around;
     background-image: url("../../assets/banner.jpg");
-    background-position: center -800px;
+    background-position: 700px;
     width: 100%;
     grid-column: 1 / 5;
     grid-row: 1/ 2;

@@ -19,6 +19,9 @@ export default function MainSection({allCountries, pagesFilter, pageFiltered,
     const dispatch = useDispatch();
     const paginationOnOff = useSelector((state) => state.paginationOnOff);
 
+
+
+
     // for the previous page button
     function dispatchActionPage(event){
         dispatch(switchPreviousPage()); 
@@ -29,11 +32,6 @@ export default function MainSection({allCountries, pagesFilter, pageFiltered,
         previousPage()
     };
 
-    // for the next page button
-
-    /*function dispatchActionPage(event){
-        dispatch(switchPreviousPage()); 
-    };*/
 
     function shotFunctionsNext(){
         dispatch(switchPreviousPage());
@@ -45,23 +43,17 @@ export default function MainSection({allCountries, pagesFilter, pageFiltered,
         return(
             <div className={style.mainSection}>
                 <div className={style.cardsContainer}>
-                    
-                    {paginationOnOff === "allOn" ? <Cards allCountries={allCountries}/> : 
-                     paginationOnOff === "continentFilterOn" ? <Cards allCountries={continentFilter}/> : 
-                     paginationOnOff === "PaginationOn" ? <Cards allCountries={countriesPage}/> : 
-                     paginationOnOff === "pageValue" ? <Cards allCountries={pagesFilter}/> : null}
-                  
-                   
+                     <Cards allCountries={allCountries}/>    
                 </div>
                 <div>
-                    <button onClick={shotFunction}> Previous </button>
+                    <button className={style.pages} onClick={shotFunction}> Previous </button>
                         {[...Array(15)].map((_, index) => (
-                            <button key={index + 1} onClick={() => pageFiltered(index + 1)}>
+                            <button className={style.pages} key={index + 1} onClick={() => pageFiltered(index + 1)}>
                         {index + 1}
                      </button>
       ))}
                     
-                    <button onClick={shotFunctionsNext}> Next page </button>
+                    <button className={style.pages} onClick={shotFunctionsNext}> Next page </button>
                 </div>
             </div>
         );

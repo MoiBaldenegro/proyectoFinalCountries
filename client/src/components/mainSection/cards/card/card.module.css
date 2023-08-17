@@ -1,31 +1,42 @@
 .card{
     display: flex;
     justify-content: center;
-    background-color: aqua;
-    border: 2px solid #000;
     border-radius: 8px;
     height: 180px;
-    width: 200px;
+    width: 180px;
     margin: 1px;
+    border: 1px solid #c9c8f3;
+    background-color: #0e084949;
+
 }
+
 .flag{
     width: 135px;
     height: 80px;
     padding: 10px;
     border-radius: 15px;
+    background: transparent;
+    color: #c9c8f3;
 }
+
 .shadow{
     display: flex;
     font-size: x-small;
     flex-direction: column;
     position: relative;
     padding: 10px;
+    background: transparent;
+    color: #c9c8f3;
 
-};
+}
+
 .name{
     font-size: 15px;
     position: absolute;
+    background: transparent;
+
 }
+
 .favButton{
     width: 40px;
     border: none;
@@ -34,11 +45,19 @@
     margin-left: 123px;
     top: 132px;
     position: absolute;
+    background: transparent;
+
 }
+
 .continent{
     font-size: 12px;
     position: absolute;
     top: 140px;
+    background: transparent;
+
+}
+.navFlag{
+    background: transparent;
 }
     
    
