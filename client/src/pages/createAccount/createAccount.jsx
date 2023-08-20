@@ -5,6 +5,13 @@ import { createAccount } from "../../redux/actions";
 import { NavLink } from "react-router-dom";
 
 export default function CreateAccount() {
+    
+    const [errors, setErrors ] = useState({
+        username: "",
+        email: "",
+        password: ""
+    });
+
     const dispatch = useDispatch();
     const [account, setAccount] = useState({
         username: "",

@@ -2,7 +2,11 @@ const { Country } = require("../db")
 
 // Controller search for id
 const searchCountryIdController = async (id)=> {
-    const countryDetails = await Country.findByPk(id);
+    const countryDetails = await Country.findOne({
+        where: {
+            id: id
+        }
+    });
     return countryDetails;
 };
 // Controller search for continent

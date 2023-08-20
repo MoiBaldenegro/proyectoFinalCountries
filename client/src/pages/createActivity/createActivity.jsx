@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 
 import style from "./createActivity.module.css";
-import getCountries, { postActivity } from "../../redux/actions";
+import getCountries, { getAllActivities, postActivity } from "../../redux/actions";
 import { useSelector } from "react-redux";
 
 
@@ -20,7 +20,7 @@ export default function CreateActivity(){
         difficulty: "",
         duration: "",
         season: [],
-        country: []
+        countries: []
     });
     const difficulties = ["Easy", "Intermediate", "Moderate", "Hard", "Insane"];
     const seasons = ["Spring", "Summer", "Fall", "Winter"];
@@ -32,13 +32,13 @@ export default function CreateActivity(){
     };
 
 function handleChangeCountries(countryName){
-    const updatedCountries = activity.country.includes(countryName)
-    ? activity.country.filter(item => item !== countryName)
-    : [...activity.country, countryName];
+    const updatedCountries = activity.countries.includes(countryName)
+    ? activity.countries.filter(item => item !== countryName)
+    : [...activity.countries, countryName];
 
     setActivity({
         ...activity,
-        country: updatedCountries
+        countries: updatedCountries
     })
 
     }
@@ -84,6 +84,8 @@ function handleChangeCountries(countryName){
     function onSubmit(event){
         event.preventDefault();
         dispatch(postActivity(activity))
+        .then(getAllActivities())
+
     }
 
     function handleChange(event){
@@ -111,9 +113,11 @@ function handleChangeCountries(countryName){
 
     return(
         <div className={style.formActivities}>
+            
             <div className={style.formContainerOne}>
-                <h2> CREATE ACTIVITY </h2>
+                <h2 className={style.createTittleForm}> <b  className={style.G}>  C</b>REATE <b className={style.G}>A</b>CTIVITY </h2>
                     <input type="text" required
+                    className={style.inputActivity}
                            name="name" 
                            onChange={handleChange} 
                            value={activity.value} 
@@ -148,7 +152,7 @@ function handleChangeCountries(countryName){
                     <div>
                      {seasons.map(season => (
                        <label key={season}>
-                        <input
+                        <input className={style.seasons}
                         type="checkbox"
                         value={season}
                         checked={activity.season.includes(season)}
@@ -175,7 +179,7 @@ function handleChangeCountries(countryName){
                                                 <input
                                                 type="checkbox"
                                                 value={country.name}
-                                                checked={activity.country.includes(country.name)}
+                                                checked={activity.countries.includes(country.name)}
                                                 onChange={() => handleChangeCountries(country.name)}
                                                 />
                                                 {country.name}

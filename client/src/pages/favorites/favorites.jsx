@@ -12,7 +12,7 @@ export default function Favorites(props){
 
     return(
         
-        <div>
+        <div className={style.favorites}>
             <h1> FAVORITES PAGE </h1>
              <div>
                 {favArray?.map((country) => <Card key={country.id} country={country}/> )}   

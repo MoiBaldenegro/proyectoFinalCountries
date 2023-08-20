@@ -26,7 +26,7 @@ let initialState = { allCountries : [],
                      paginationOnOff : "allOn",
                      pageValue: [],
                      cardDetailState: [],
-                     accessLog: true,
+                     accessLog: false,
                      favorites: [],
                      allCountriesFilter: null,
                      getActivities: []
@@ -79,6 +79,13 @@ export default function rootReducer(state = initialState, action){
                 favorites : copyCountries, allCountries: [...copyCountries ]
 
             }
+            case ADD_FAVORITE:
+
+                return{
+                    ...state,
+                    favorites : [...state.favorites, action.payload]
+                }
+
         case DELETE_FAVORITE:
             return {
                 ...state,

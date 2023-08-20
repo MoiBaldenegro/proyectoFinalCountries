@@ -7,7 +7,7 @@ export const PAGINATION_ON_OFF = "PAGINATION_ON_OFF";
 export const PAGINATION_ACTIVE = "PAGINATION_ACTIVE";
 export const RETURN_TO_ALL = "RETURN_TO_ALL";
 export const REPLACE_PAGINATION =  "REPLACE_PAGINATION";
-export const CARD_DETAIL_STATE = " CARD_DETAIL_STATE";
+export const CARD_DETAIL_STATE = "CARD_DETAIL_STATE";
 export const SET_ACCES = "SET_ACCES";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const DELETE_FAVORITE = "DELETE_FAVORITE";
@@ -77,7 +77,7 @@ export function cardDetailSelect(id){
             const { data } = await axios(`http://localhost:3001/countries/${id}`);
             return dispatch({ type: CARD_DETAIL_STATE, payload : data })  
         } catch (error) {
-            console.log({error: error.message});
+            res.status(200).json({error: error.message});
         };
     };
 };
@@ -88,6 +88,7 @@ export function setAccess(value){
     };
 };
 export function addFavorite(country){
+
     return async function(dispatch){
         return dispatch({ type : ADD_FAVORITE, payload : country})
     };

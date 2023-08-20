@@ -8,10 +8,6 @@ const createActivity = async ( name, difficulty, duration, season, countries ) =
         include : { model: Country}})
 
      
-    /* if(countries && countries.length > 0 ){
-        const countriesNames = countries.map(country => country.name);
-        const activityCountry = await Country.findAll({where : { name : {[Op.in]: countriesNames } }});
-        await activity.addCountries(activityCountry)*/
      
      return activityRelation;
      

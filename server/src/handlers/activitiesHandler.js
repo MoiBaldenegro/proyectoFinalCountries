@@ -3,6 +3,7 @@ const { Activity } = require("../db");
 
 const activitiesPostHandler = async (req, res)=>{
     const { name, difficulty, duration, season, countries } = req.body;
+    
     try {
         const response = await createActivity(name, difficulty, duration, season, countries);
         res.status(200).json(response);
@@ -21,6 +22,7 @@ const activitiesGetHandler =  async  (req, res)=>{
     }
     
 };
+
 
 module.exports = {
     activitiesGetHandler,

@@ -1,11 +1,16 @@
 .cardActivityContainer{
+  align-items: center;
     border: 1px solid #fff;
     color: #fff;
-    width: 400px;
-    height: 350px;
-  display: flex;
-  justify-content: center;
-  margin-top: 200px;
+    width: 200px;
+    height: 120px;
+    display: flex;
+    justify-content: space-around;
+    margin: 10PX;
+    margin-left: 25px;
+    border-radius: 6px;
+    font-size: 8px;
+    transition: 250ms;
 }
 .cardActivityContainer:hover {
     transform: translateY(-5px);

@@ -18,9 +18,10 @@ import { replacePagination } from "../../redux/actions/index.js";
 import  style  from "./home.module.css";
 
 export default function Home(){
+    const getActivities = useSelector(state => state.getActivities);
 
 
-      
+
 
     const dispatch = useDispatch(); 
     const allCountries = useSelector((state) => state.allCountries);
@@ -64,17 +65,17 @@ export default function Home(){
    
 
     //////////////////////////////////////////////////////////////////
-    //////////////////// COUNTRIES PAGINATION   ////////////////////////
+    //////////////////// COUNTRIES PAGINATION   //////////////////////
     //////////////////////////////////////////////////////////////////
-    const countriesPerPage = 10;
-    const [ countriesPage, setCountriesPage ] = useState([ ...allCountries ].splice(countriesPerPage));
-    const [ actuallyPage, setActuallyPage ] =  useState(0); 
+    const countriesPerPage = 15;
+    const [ countriesPage, setCountriesPage ] = useState([ ...continentFilter ].splice(countriesPerPage));
+    const [ actuallyPage, setActuallyPage ] =  useState(1); 
 
     function nextPage(){
       const next_page = actuallyPage + 1;
       const indexPage = next_page * countriesPerPage;
       if(indexPage >= allCountries.length) return; 
-      setCountriesPage([ ...allCountries].splice(indexPage, countriesPerPage));
+      setCountriesPage([ ...continentFilter].splice(indexPage, countriesPerPage));
       setActuallyPage(next_page);
 
     };
@@ -83,7 +84,7 @@ export default function Home(){
        if (previous_page < 0) return;
        const indexPage = previous_page * countriesPerPage;
        if(allCountries.length <= 0) return;
-       setCountriesPage([ ...allCountries].splice(indexPage,countriesPerPage ));
+       setCountriesPage([ ...continentFilter].splice(indexPage,countriesPerPage ));
        setActuallyPage(previous_page);
     };
 
@@ -104,7 +105,7 @@ export default function Home(){
             clearCountries();
         };*/   
     }, [dispatch]);
-
+    
     // update immediately after creating a country
     /* useEffect(()=>{
         dispatch(getCountries()) 
@@ -128,15 +129,12 @@ export default function Home(){
                     <NavBar handleChange={handleChange} 
                             handleSubmit={handleSubmit}
                              />
-                    <Aside/>
-                    <MainSection allCountries={continentFilter} 
-                                countriesPage={countriesPage}
+                    <MainSection allCountries={countriesPage} 
                               continentFilter={continentFilter}
                                   pagesFilter={pagesFilter}
                                  pageFiltered={pageFiltered}
                                      nextPage={nextPage} 
                                  previousPage={previousPage} />
-                    <Footer/> 
 
                 </div>
                  

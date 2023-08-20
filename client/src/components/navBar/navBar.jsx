@@ -35,7 +35,7 @@ export default function NavBar({handleChange, handleSubmit, handleContinent}){
         
         console.log(populationOrder);
             
-            let populationCountriesOrdered = [...allCountries]; // Crear una copia para no modificar el estado original
+            let populationCountriesOrdered = [...allCountries]; 
             
             if (populationOrder === "A") {
                 populationCountriesOrdered.sort((a, b) => parseInt(a.population) - parseInt(b.population));

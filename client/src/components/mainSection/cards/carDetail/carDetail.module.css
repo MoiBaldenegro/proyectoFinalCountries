@@ -90,6 +90,10 @@
     border-radius: 12px;
     margin: 5px;
 }
+.sixTittle{
+    position: absolute;
+    background-color: transparent;
+}
 .three{
     text-align: center;
     display: flex;
@@ -120,7 +124,7 @@
 
 
 .flagCountry{
-    margin-top: 50px;
+    margin-top: 20px;
     background-color: #124577;
     box-shadow: 0 0 8px #124577a9;
     width: 240px;
@@ -142,6 +146,28 @@
     
 }
 .backButton:hover{
+    background-color: #c9c8f3;
+    border: 1px solid #124577;
+    color: #124577;
+}
+.cardActivity{
+    background-color: #124577;
+}
+.backButtonCreate{
+    color: #c9c8f3;
+    border-radius: 12px;
+    border: 1px solid #c9c8f3;
+    padding: 10px 20px;
+    letter-spacing: 4px;
+    background-color: #124577;
+    transition: 350ms;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: -30px;
+    margin-top: 20px;
+
+}
+.backButtonCreate:hover{
     background-color: #c9c8f3;
     border: 1px solid #124577;
     color: #124577;
