@@ -14,7 +14,8 @@ import { GET_COUNTRIES,
          SET_CONTINENT_FILTER,
          SET_ORDER_ALPHABETIC,
          SET_POPULATION_ORDER,
-         GET_ACTIVITIES
+         GET_ACTIVITIES,
+         PAGINADO_NUEVO,
 
         } from "../actions";
 
@@ -26,10 +27,12 @@ let initialState = { allCountries : [],
                      paginationOnOff : "allOn",
                      pageValue: [],
                      cardDetailState: [],
-                     accessLog: false,
+                     accessLog: true,
                      favorites: [],
                      allCountriesFilter: null,
-                     getActivities: []
+                     getActivities: [],
+                     paginasNuevo: 0
+
                    };
 
 export default function rootReducer(state = initialState, action){
@@ -150,6 +153,11 @@ export default function rootReducer(state = initialState, action){
                 getActivities : action.payload
             }
         
+        case PAGINADO_NUEVO:
+            return{
+                ...state,
+                paginasNuevo: action.payload
+            }
             
 
     };

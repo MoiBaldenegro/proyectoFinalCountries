@@ -10,7 +10,7 @@ import MainSection from "../../components/mainSection/mainSection";
 import Footer from "../../components/footer/footer";
 
 ////////// ACTIONS AND FUNCTIONS ///////////////////////////
-import  getCountries from "../../redux/actions/index.js";
+import  getCountries, { paginadoNuevo } from "../../redux/actions/index.js";
 import { returnToAllOn } from "../../redux/actions/index.js";
 import { replacePagination } from "../../redux/actions/index.js";
 
@@ -19,7 +19,7 @@ import  style  from "./home.module.css";
 
 export default function Home(){
     const getActivities = useSelector(state => state.getActivities);
-
+    const paginasNuevo = useSelector(state => state.paginasNuevo)
 
 
 
@@ -68,31 +68,29 @@ export default function Home(){
     //////////////////// COUNTRIES PAGINATION   //////////////////////
     //////////////////////////////////////////////////////////////////
     const countriesPerPage = 15;
-    const [ countriesPage, setCountriesPage ] = useState([ ...continentFilter ].splice(countriesPerPage));
+   /* const [ countriesPage, setCountriesPage ] = useState([ ...continentFilter ].splice(countriesPerPage));
     const [ actuallyPage, setActuallyPage ] =  useState(1); 
-
+*/
     function nextPage(){
-      const next_page = actuallyPage + 1;
-      const indexPage = next_page * countriesPerPage;
-      if(indexPage >= allCountries.length) return; 
-      setCountriesPage([ ...continentFilter].splice(indexPage, countriesPerPage));
-      setActuallyPage(next_page);
+     dispatch(paginadoNuevo(paginasNuevo + 1))
 
     };
+
     function previousPage(){
-       const previous_page = actuallyPage - 1;
-       if (previous_page < 0) return;
-       const indexPage = previous_page * countriesPerPage;
-       if(allCountries.length <= 0) return;
-       setCountriesPage([ ...continentFilter].splice(indexPage,countriesPerPage ));
-       setActuallyPage(previous_page);
+        dispatch(paginadoNuevo(paginasNuevo - 1 ))
+      
     };
+
+    const inicio = paginasNuevo * countriesPerPage;
+    const final =  inicio + countriesPerPage;
+    const totalDePaginas = Math.ceil(continentFilter.length / countriesPerPage);
+    
 
     // Pagination per button page
-    const pagesFilter = allCountries.slice(0, countriesPerPage);
+   /* const pagesFilter = allCountries.slice(0, countriesPerPage);
     function pageFiltered(){
         dispatch(replacePagination(pagesFilter));
-    };
+    }; */
 
 
 
@@ -129,11 +127,9 @@ export default function Home(){
                     <NavBar handleChange={handleChange} 
                             handleSubmit={handleSubmit}
                              />
-                    <MainSection allCountries={countriesPage} 
-                              continentFilter={continentFilter}
-                                  pagesFilter={pagesFilter}
-                                 pageFiltered={pageFiltered}
+                    <MainSection allCountries={continentFilter.slice(inicio, final)} 
                                      nextPage={nextPage} 
+                                     totalDePaginas={totalDePaginas}
                                  previousPage={previousPage} />
 
                 </div>

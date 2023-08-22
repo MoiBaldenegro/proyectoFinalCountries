@@ -3,7 +3,8 @@
 
 
 export default function handleDispatches(dispatch, event){
-    if ( name === "FilterByContinent"){
+    const { name, value } = event.target;
+    if ( name === "filterByContinent"){
         dispatch(filterCountriesByContinent(value))
     }
 }

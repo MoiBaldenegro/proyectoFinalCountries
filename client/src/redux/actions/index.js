@@ -16,7 +16,9 @@ export const ORDER_POPULATION = "ORDER POPULATION"
 export const SET_CONTINENT_FILTER = "SET_CONTINENT_FILTER";
 export const SET_ORDER_ALPHABETIC = "SET_CONTINENT_FILTER";
 export const SET_POPULATION_ORDER = "SET_POPULATION_ORDER";
-export const GET_ACTIVITIES = "GET_ACTIVITIES"
+export const GET_ACTIVITIES = "GET_ACTIVITIES";
+export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
+export const PAGINADO_NUEVO = "PAGINADO_NUEVO";
 
 export default function getCountries(){
     return async function(dispatch){
@@ -146,5 +148,17 @@ export function setContinentFilter(filter){
             }
         }
     }
+
+    export function paginadoNuevo(paginas){
+        return {
+            type: PAGINADO_NUEVO, payload: paginas
+        }
+    }
+/*
+    export function filterByContinentFilter (continent){
+        return {
+            type: FILTER_BY_CONTINENT, payload: continent
+        }
+    }*/
 
  

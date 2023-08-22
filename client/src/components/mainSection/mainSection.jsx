@@ -14,10 +14,10 @@ import { switchPreviousPage } from "../../redux/actions/index";
 
 
 export default function MainSection({allCountries, pagesFilter, pageFiltered, 
-                                     nextPage, previousPage, continentFilter, countriesPage}){
+                                     nextPage, previousPage, totalDePaginas}){
 
+    const paginasNuevo =  useSelector(state => state.paginasNuevo)
     const dispatch = useDispatch();
-    const paginationOnOff = useSelector((state) => state.paginationOnOff);
 
 
 
@@ -46,14 +46,11 @@ export default function MainSection({allCountries, pagesFilter, pageFiltered,
                      <Cards allCountries={allCountries}/>    
                 </div>
                 <div>
-                    <button className={style.pages} onClick={shotFunction}> Previous </button>
-                        {[...Array(15)].map((_, index) => (
-                            <button className={style.pages} key={index + 1} onClick={() => pageFiltered(index + 1)}>
-                        {index + 1}
-                     </button>
-      ))}
+                    <button className={style.pages} disabled={paginasNuevo === 0} onClick={shotFunction}> Previous </button>
+
+                              <span className={style.pages}> {paginasNuevo + 1} </span>
                     
-                    <button className={style.pages} onClick={shotFunctionsNext}> Next page </button>
+                    <button className={style.pages} disabled={paginasNuevo === totalDePaginas - 1 } onClick={shotFunctionsNext}> Next page </button>
                 </div>
             </div>
         );

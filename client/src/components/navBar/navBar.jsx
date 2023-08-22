@@ -1,6 +1,6 @@
 //////// DEPENDENCIES ///////////////
 import { useDispatch, useSelector } from "react-redux";
-import { setContinentFilter } from "../../redux/actions/index";
+import { paginadoNuevo, setContinentFilter } from "../../redux/actions/index";
 import { setOrder, setOrderPopulation } from "../../redux/actions/index";
 
 //////// COMPONENTS /////////////////
@@ -16,10 +16,12 @@ import { switchPageOnAction, handleOrderPopulation } from "../../redux/actions/i
 
 
 export default function NavBar({handleChange, handleSubmit, handleContinent}){
+    
     const dispatch = useDispatch();
      const allCountries = useSelector(state => state.allCountries);
 
   function handleChangeOrder(order){
+    dispatch(paginadoNuevo(0))
     if(order === "ascend"){
         const countriesOrder = allCountries.sort((a, b) => a.name.localeCompare(b.name));
         dispatch(setOrder(countriesOrder));
@@ -32,8 +34,8 @@ export default function NavBar({handleChange, handleSubmit, handleContinent}){
     return allCountries
 }
     function handleOrderByPopulation(populationOrder){
-        
-        console.log(populationOrder);
+        dispatch(paginadoNuevo(0))
+    
             
             let populationCountriesOrdered = [...allCountries]; 
             
@@ -60,7 +62,8 @@ export default function NavBar({handleChange, handleSubmit, handleContinent}){
 
    function shotFunction(value){
     FilterOrPagination();
-    dispatch(setContinentFilter(value));h
+    dispatch(setContinentFilter(value));
+    dispatch(paginadoNuevo(0))
 
    };
 
