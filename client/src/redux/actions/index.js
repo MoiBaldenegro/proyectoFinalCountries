@@ -19,6 +19,7 @@ export const SET_POPULATION_ORDER = "SET_POPULATION_ORDER";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const PAGINADO_NUEVO = "PAGINADO_NUEVO";
+export const RESET_COUNTRIES = "RESET_COUNTRIES";
 
 export default function getCountries(){
     return async function(dispatch){
@@ -152,6 +153,11 @@ export function setContinentFilter(filter){
     export function paginadoNuevo(paginas){
         return {
             type: PAGINADO_NUEVO, payload: paginas
+        }
+    }
+    export function resetCountries(countriesReset){
+        return {
+            type: RESET_COUNTRIES, payload: countriesReset
         }
     }
 /*

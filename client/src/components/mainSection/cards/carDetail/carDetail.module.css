@@ -69,6 +69,7 @@
     grid-row: 1 / 2;
     border-radius: 12px;
     margin: 5px;
+    min-height: 200px;
 }
 .four{
     display: flex;
@@ -89,6 +90,7 @@
     grid-row: 2 / 4;
     border-radius: 12px;
     margin: 5px;
+    overflow-y: auto;
 }
 .sixTittle{
     position: absolute;
@@ -171,4 +173,25 @@
     background-color: #c9c8f3;
     border: 1px solid #124577;
     color: #124577;
+}
+.Actividades{
+    height: 120px;
+    width: 225px;
+    text-align: center;
+    color: #c9c8f3;
+    font-weight: 200;
+    margin: 20px 0px 0px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0 0 5px #fff;
+    background-color: #124577;
+    
+}
+.Actividades h4{
+    background-color: transparent;
+}
+.Actividades p{
+    background-color: transparent;
 }

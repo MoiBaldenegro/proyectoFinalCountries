@@ -1,6 +1,5 @@
 import { GET_COUNTRIES, 
          GET_CONTINENT, 
-         COUNTRIES_PAGINATION, 
          PAGINATION_ON_OFF, 
          PAGINATION_ACTIVE,
          RETURN_TO_ALL,
@@ -9,13 +8,12 @@ import { GET_COUNTRIES,
          SET_ACCES,
          ADD_FAVORITE,
          DELETE_FAVORITE,
-         MASTER_FILTER,
-         ORDER_POPULATION,
          SET_CONTINENT_FILTER,
          SET_ORDER_ALPHABETIC,
          SET_POPULATION_ORDER,
          GET_ACTIVITIES,
          PAGINADO_NUEVO,
+         RESET_COUNTRIES
 
         } from "../actions";
 
@@ -95,30 +93,7 @@ export default function rootReducer(state = initialState, action){
                 favorites :  state.favorites.filter((country)=>  country.id !== action.payload)
             };
 
-        case  ORDER_POPULATION:
-             let copyCountriesOrder = [...state.allCountriesFilter.sort((a,b)=>{
-                if(action.payload === "A"){
-                    if (a.population > b.population) {
-                        return 1;
-                    }
-                    if (a.population < b .population) {
-                      return -1  
-                    }
-                    return 0
-                }
-                if( action.payload === "B"){
-                    if (a.population > b.population) {
-                        return -1;
-                    }
-                    if (a.population < b.population ) {
-                      return 1  
-                    }
-                    return 0
-                }else{
-                    return 
-                    
-                }
-             })];
+       
 
 
              return{
@@ -132,15 +107,13 @@ export default function rootReducer(state = initialState, action){
                 ...state,
                 allCountriesFilter: action.payload
             }
-        
-        default:
-            return state;
+    
         
         
         case SET_ORDER_ALPHABETIC:
             return{
                 ...state,
-                allCountriesFilter: action.payload
+                allCountries: action.payload
             }
         case SET_POPULATION_ORDER:
             return {
@@ -158,6 +131,14 @@ export default function rootReducer(state = initialState, action){
                 ...state,
                 paginasNuevo: action.payload
             }
+        case RESET_COUNTRIES:
+            return {
+                ...state,
+                allCountries: action.payload
+            }
+
+            default:
+            return state;
             
 
     };

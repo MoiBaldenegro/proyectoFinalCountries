@@ -126,6 +126,7 @@ export default function Home(){
                     <Header className={style.header}/>
                     <NavBar handleChange={handleChange} 
                             handleSubmit={handleSubmit}
+                            continentFilter={continentFilter}
                              />
                     <MainSection allCountries={continentFilter.slice(inicio, final)} 
                                      nextPage={nextPage} 

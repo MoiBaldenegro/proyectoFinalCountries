@@ -1,0 +1,17 @@
+
+.favorites{
+    color: aqua;
+    text-align: center;
+}
+
+.favorites h1{
+    font-size: 25px;
+    color: #f9f8c3;
+    margin: 25px;
+}
+
+
+.targets{
+    display: flex;
+    justify-content: space-around;
+}

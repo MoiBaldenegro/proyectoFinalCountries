@@ -11,12 +11,16 @@ export default function CardDetail() {
     const { id } = useParams();
 
     const cardDetailRender = useSelector((state) => state.cardDetailState);
+
     
     const getActivities = useSelector((state) => state.getActivities);
         
     useEffect(() => {
+        
         dispatch(cardDetailSelect(id))
+        console.log("cardDetailRender:", cardDetailRender);
        return ()=> dispatch({ type: CARD_DETAIL_STATE, payload :  [] })
+       
 
     }, [id]  );
 
@@ -37,12 +41,20 @@ export default function CardDetail() {
                 <h4 className={style.capital}>Capital: <br /> {cardDetailRender?.capital || "-"} </h4>
             </div>
             <h2 className={style.five}>ACTIVITIES</h2>
-            <div className={style.six} >
-                 {getActivities.map(activity => (
-                <CardActivity className={style.cardActivity} key={activity.id} activity={activity} />
-            ))}
-             
-            </div>
+            <div className={style.six}>
+                    
+                        {cardDetailRender.Activities && cardDetailRender.Activities.map(activityObj => (
+                            <div  className={style.Actividades} key={activityObj.id}>
+                                <h4>Name: {activityObj.name}</h4>
+                                <p>Difficulty: {activityObj.difficulty}</p>
+                                <p>Duration: {activityObj.duration}</p>
+                                <p>Season: {activityObj.season.join(', ')}</p>
+                                
+                            </div>
+                        ))}
+                    
+                </div>
+
             
             <div className={style.seven}>
                 <h4 className={style.seven}>Continent: {cardDetailRender?.continent || "-"}</h4>
